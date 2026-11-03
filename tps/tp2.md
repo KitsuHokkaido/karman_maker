@@ -60,3 +60,8 @@ le TP précédent.
 ## A vous de jouer 
 
 > N'hésitez pas si vous avez besoin d'aide.
+
+
+## Et après ? 
+
+Vous pouvez passer au [TP3](tp3.md)

@@ -58,7 +58,7 @@ vous avez ici la documentation pour réaliser des géomtries complexes. Toujours
 lorsque vous cherchez qqch. 
 
 Dans la suite pour la navigation au sein de la documentation lorsque vous verrais : 
-`HGEOM` et HMESH` cela fera référence aux adresses cités précédement, le `home`. Par exemple, 
+`HGEOM` et `HMESH` cela fera référence aux adresses cités précédement, le `home`. Par exemple, 
 l'adresse suivante donne accès aux méthodes pour construire des primitives dans geompy : 
 
 ```bash 
@@ -126,9 +126,30 @@ Pour l'utiliser :
 geometry = geompy.MakePartition([rectangle], [line1, line2, ...])
 ```
 
-Je vous laisse ici réaliser le découpage effectué sur l'image du haut.
+Je vous laisse ici réaliser le découpage effectué sur l'image du haut. A savoir 
+les 4 lignes. Peu importe les dimensions, c'est juste pour appendre.
+
+### Extrusion
+
+Enfin, pareillement à ce qu'on peut faire avec un logiciel de CAO, on peut aussi faire 
+des extrusions. vous trouverez les fonctions nécessaires dans : 
+
+```bash 
+HGEOM/Creating geometrical object/Creating Complex Objects/
+```
+
+Vous pouvez par exemple utiliser la fonction suivante : 
+
+```python
+direction = geompy.MakeVectorDXDYDZ(0, 0, 1)
+geometry  = geompy.MakePrismVecH(geometry, direction, 1)
+```
+
+qui attend comme arguments : 
 
 ## Groupes
+
+### Côté géometrie
 
 Passons maintenant sur la construction des groupes. Ici nous allons créer des 
 groupes sur la géométrie cela signifie que l'on va rassmebler ensmeble des formes 
@@ -202,6 +223,25 @@ qu'on a fait des partitions vous avez plsuieurs sous-faces sur la face de l'inle
 vous aurez donc besoin d'autant de point que de faces (ce qu'on peut automasatiser 
 évidemment, pas ebsoin de définir les points à la main, mais ça revient à utiliser la 
 précédente méthode avec le plan).
+
+### Côté maillage
+
+Une fois que vous avez crée ces groupes sur la géomtrie il faut les faire apprendre dans
+le maillage, vous allez voir juste après comment réaliser le maillage mais pour réaliser 
+les groupes il suffit d'utiliser cette méthode par exemple : 
+
+```python
+mesh.GroupOnGeom(inlet, "Inlet", SMESH.FACE)
+```
+
+où les arguments attendus sont le groupe, le nom et le type de SMESH.FACE par exemple.
+Vous pouvez retouver la signature de cette fonction ainsi que d'autres fonctions liées 
+aux groupes sur maillages ici : 
+
+
+```bash 
+HMESH/Structured documentation/Grouping elements/Creating groups/
+```
 
 ## Maillage
 
@@ -279,3 +319,7 @@ if not mesh.Compute():
 Et voilà vous avez toutes les infos pour obtenir ce magnifique maillage : 
 
 ![](figs/mesh.png)
+
+## Et après ? 
+
+Vous pouvez passer au [TP2](tp2.md)
