@@ -1,67 +1,88 @@
-# Maillage du cas test Von Karman
+# TP2 - Maillage du cas test de Von Kármán
 
-## Objectif 
+## Objectif
 
-L'objectif ici est que vous réalisiez le maillage en autonomie du cas test 
-qui vous intéresse. Quelques indices vous sont fournis dans la suite.
+L'objectif est de réaliser **en autonomie** le maillage du cas test de Von Kármán :
+un écoulement autour d'un cylindre (ici un disque en 2D, extrudé sur une maille
+d'épaisseur). Quelques indices vous sont fournis dans la suite, mais tout ce dont vous
+avez besoin a été vu au TP1.
 
-Quelques conseils avant de démarrer, essayer d'encapsuler ça dans une classe 
-ou alors à minima de ne pas laisser de valeurs numériques trainer dans votre 
-code, c'est là aussi tout l'intérêt de passer par python, cela vous permet de 
-piloter votre géométrie/maillage à l'aide de quelques paramètres caractéristiques. 
-Par exemple, vous pourriez tout piloter en ne spécifiant que les apramètres suivants : 
+Un conseil avant de démarrer : essayez d'encapsuler votre code dans une classe, ou
+au minimum de ne laisser aucune valeur numérique "en dur" dans le code. C'est tout
+l'intérêt de passer par Python : vous pouvez piloter la géométrie et le maillage avec
+quelques paramètres caractéristiques. Par exemple, vous pourriez tout piloter en ne
+spécifiant que :
 
-- Dimension du domaine
-- Taille du disque
-- Distance du disque à l'inlet 
-- Taille de maille caractéristique, la plus petite proche au niveau du cercle 
-par exemple
+- les dimensions du domaine,
+- la taille du disque,
+- la distance du disque à l'entrée (inlet),
+- une taille de maille caractéristique (par exemple la plus petite, au niveau du disque).
 
-Et c'est tout !!
+Et c'est tout !
 
-## Géometrie
+> [!TIP]
+> Ce découpage en paramètres sera réutilisé au TP3 pour automatiser et optimiser le maillage.
 
-Ci dessous vous est proposé une décomposition du domaine géométrique, 
-libre à vous de ne pas passer par cette décomposition.
+## Géométrie
+
+Voici une décomposition possible du domaine. Vous êtes libres de ne pas la suivre.
 
 ![](figs/karman.png)
 
-Vous aurez notamment besoin de construire un disk, je vous laisse chercher
-dans la documentation le nom de la méthode, regardez du côté de : 
+Vous aurez besoin de construire un disque. Cherchez dans la documentation le nom de
+la méthode, du côté de :
 
-```bash 
+```bash
 HGEOM/Creating geometrical objects/Creating 3D Primitives/
 ```
 
-Vous aurez également besoin de faire faire une rotation à ce disque pour 
-des raisons topologiques. Vous pouvez regarder ça du côté de : 
+Vous devrez ensuite faire tourner ce disque, pour des raisons topologiques : le
+contour d'un disque a un point de départ imposé, et il faut que les sommets du cercle
+coïncident avec les lignes de découpe du domaine (ici, les diagonales) pour que chaque
+bloc soit bien un quadrangle à quatre arêtes. Regardez du côté de :
 
-```bash 
-HGEOM/Transforming geometrical object/Transformation Operations/
+```bash
+HGEOM/Transforming geometrical objects/Transformation Operations/
 ```
 
-Vous aurez aussi besoin d'une opération booléen pour enlever de la matière à votre 
-domaine (enlever le cercle). Regardez du côté de : 
+Enfin, vous aurez besoin d'une opération booléenne pour retirer le disque du domaine
+(le disque est un trou dans l'écoulement). Regardez du côté de :
 
-```bash 
-HGEOM/Transforming geometrical object/Boolean Operations/
+```bash
+HGEOM/Transforming geometrical objects/Boolean Operations/
 ```
 
-## Groupes 
+Une fois la géométrie 2D partitionnée, n'oubliez pas l'extrusion, comme au TP1.
 
-Pour ce qui est des groupes vous avez déjà vu l'essentiel des méthodes dans le TP 
-précédent.
+## Groupes
+
+Pour les groupes, vous avez déjà vu l'essentiel dans le TP précédent. Il vous faudra
+en plus un groupe pour la paroi du disque. Ce sont des faces courbes, cherchez du côté de :
+
+```bash
+HGEOM/Creating geometrical objects/Creating Advanced Geometrical Objects/Access to sub-shapes by criteria/
+```
+
+(il existe des fonctions pour récupérer les formes situées sur un cylindre).
 
 ## Maillage
 
-Pour le maillage vous avez également vu l'ensemble des méthodes nécessaires dans 
-le TP précédent.
+Pour le maillage, vous avez également vu toutes les méthodes nécessaires dans le TP1.
+Pour grossir le maillage en s'éloignant du disque, n'oubliez pas de faire attention au
+**sens** des progressions géométriques.
 
-## A vous de jouer 
+## À vous de jouer
 
-> N'hésitez pas si vous avez besoin d'aide.
+Pour vérifier votre travail :
 
+- `mesh.Compute()` réussit,
+- tous les groupes (`INLET`, `OUTLET`, parois, disque, faces avant/arrière) sont non vides,
+- le maillage est fin autour du disque et grossit progressivement vers l'extérieur,
+- aucune valeur numérique n'est codée en dur au milieu du script.
 
-## Et après ? 
+> [!NOTE]
+> N'hésitez pas à demander de l'aide.
 
-Vous pouvez passer au [TP3](tp3.md)
+## Et après ?
+
+Vous pouvez passer au [TP3](tp3.md).
