@@ -1,5 +1,3 @@
 # Optimisation topologique
----
 
 ## Objectifs
----

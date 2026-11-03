@@ -1,18 +1,15 @@
 # TP1 - Basique de l'API Salome
----
 
 ## Objectifs
----
 
 L'objectif dans cette partie sera de mailler cette forme géométrique très simple : 
 
-![](figs/cas_simple.png)
+<img src="figs/cas_simple.png" width="50%">
 
 Cela permet de voir les fondamentaux de l'API de Salome et de vous rendre indépendant 
 sur cet API.
 
 ## Environnement de travail
----
 
 Avant de rentrer dans le vif du sujet, vérifions que tout fonctionne de votre côté. 
 Tout d'abord il faut inclure les modules nécessaires dans votre fichier python 
@@ -64,10 +61,7 @@ HGEOM/Creating geometrical objects/Creating basic Geometric Objects/
 ```
 
 ## Géométrie 
----
 
 ## Groupes
----
 
 ## Maillage
----

@@ -1,8 +1,6 @@
 # Maillage du cas test Von Karman
----
 
 ## Objectif 
---- 
 
 L'objectif ici est que vous réalisiez le maillage en autonomie du cas test 
 qui vous intéresse. Quelques indices vous sont fournis dans la suite.
@@ -22,7 +20,6 @@ par exemple
 Et c'est tout !!
 
 ## Géometrie
---- 
 
 Ci dessous vous est proposé une décomposition du domaine géométrique, 
 libre à vous de ne pas passer par cette décomposition.
@@ -51,13 +48,11 @@ HGEOM/Transforming geometrical object/Boolean Operations/
 ```
 
 ## Groupes 
----
 
 Pour ce qui est des groupes vous avez déjà vu l'essentiel des méthodes dans le TP 
 précédent.
 
 ## Maillage
----
 
 Pour le maillage vous avez également vu l'ensemble des méthodes nécessaires dans 
 le TP précédent.
