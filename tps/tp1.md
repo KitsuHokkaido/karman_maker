@@ -37,10 +37,15 @@ smesh  = smeshBuilder.New()
 ```
 
 Enfin, pour vérifier que tout fonctionne bien, contruisons un cube et exportons 
-cette géometrie au format stl par exemple : 
+cette géometrie au format .vtk par exemple : 
 
 ```python 
-box = geompy.MakeBox()
+pt1 = geompy.MakeVertex(0, 0, 0)
+pt2 = geompy.MakeVertex(1, 1, 1)
+
+box = geompy.MakeBoxTwoPnt(pt1, pt2)
+
+geompy.ExportVTK(box, "geometry.vtk")
 ```
 
 Dans la suite, nous nous référons constamment à la documentation, il y a 
@@ -62,6 +67,76 @@ HGEOM/Creating geometrical objects/Creating basic Geometric Objects/
 
 ## Géométrie 
 
+### Rectangle
+
+Vous avez plusieurs façons de construire une géométrie sous SALOME, 
+vous avez des formes déjà toutes prêtes commes des cubes, des cylindres, ...
+vous pouvez trouver cela dans ici : 
+
+```bash 
+HGEOM/Creating geometrical objects/Creating 3D Primitives/
+```
+
+Ce que je vous propose plutôt ça va être de constuire nous même le rectangle 
+sur l'image plus haut. L'intête c'est ce que vous allez voir comment faire 
+n'importe quelle forme.
+
+Pour cela rendez-vous ici : 
+
+```bash 
+HGEOM/Creating geometrical objects/Creating basic Geometric Objects/
+```
+Vous pouvez tracer des points, des lignes, les reliez ensemble et créer une surface.
+Les méthodes sont les suivantes : 
+
+```python 
+    pt1       = geompy.MakeVertex(x, y, z) 
+    line      = geompy.MakeLineTwoPnt(pt1, pt2)
+    wire      = geompy.MakeWire([line1, line2, ...])
+    rectangle = geompy.MakeFace(wire, True)
+```
+
+Pour tracer le rectangle vous devez faire attention aux lignes, en effet 
+elles ont un sens vous ne pouvez pas relier deux lignes entre elle si elles 
+ne forment pas un contour orienté fermé.
+
+Bien évidemment vous pouvez aussi tracer d'autres éléments, je vous laisse 
+regarder dans la documentation. 
+
+### Partitions
+
+Précédement, vous avez vu qu'on a découpé notre rectangle en plusieurs sous formes, 
+notamment en 9 sous rectangles l'intérêt ici est surtourt pour permetter lors du 
+maillage de mailler plus précisment certains endroits comme pare exemple, on veut plus
+maille dans le rectangle du milieu.
+
+Pour conserver la forme de votre domaine tout en créeant des sous formes vous 
+pouvez faire des partitions. Cela se trouve dans : 
+
+```bash 
+HGEOM/Transforming geometrical object/Basic Operations
+```
+
+Pour l'utiliser : 
+
+```python 
+geometry = geompy.MakePartition([rectangle], [line1, line2, ...])
+```
+
+Je vous laisse ici réaliser le découpage effectué sur l'image du haut.
+
 ## Groupes
+
+Passons maintenant sur la construction des groupes. Ici nous allons créer des 
+groupes sur la géométrie cela signifie que l'on va rassmebler ensmeble des formes 
+d'un même type comme par exmple un groupe d'edges ou alors de faces etc. Ces groupes 
+seront utiles par la suite pour créer des groupes sur le maillage qui seront utilisés 
+poru deéfinir vos conditions aux limites. 
+
+Pour créer un groupe vous pouvez faire appel à la fonction suivante : 
+
+```python 
+geompy.MakeGroup()
+```
 
 ## Maillage
