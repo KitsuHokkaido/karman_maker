@@ -72,7 +72,7 @@ HMESH/Structured documentation/Quality controls and Filtering/
 L'idée ici pour obtenir un bon aspect ratio qui est défini comme le rapport suivant : 
 
 $$Aspect Ratio = \frac{Longueur de l′arête la plus longue}
-                      {Hauteur de l'arête la plus courte}
+                      {Hauteur de l'arête la plus courte} $$
 
 est d'essayer d'obtenir des rectangles tout simplement. Cela signifie qu'il faut controler 
 la progression géométrique en fonction de la taille de maille caractéristique obetnue. La taille 
