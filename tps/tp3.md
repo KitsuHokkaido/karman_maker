@@ -87,7 +87,7 @@ droite ($\alpha = 0$) à un arc du cercle qui passe par les 4 coins du carré ($
 
 En appliquant Pythagore, vous pouvez montrer que pour un carré de demi-côté $l$ :
 
-$$ d = \alpha \, l \, (\sqrt{2} - 1) $$
+$$ d = \alpha l (\sqrt{2} - 1) $$
 
 Les coins du carré ne bougent pas : seul le milieu de chaque côté est repoussé vers l'extérieur
 de la distance $d$.
@@ -150,10 +150,10 @@ a donc une longueur $r \, d\theta$ à la distance $r$ du centre.
 Pour que les mailles soient carrées à **toutes** les distances, la taille radiale doit être
 égale à la taille tangentielle :
 
-$$ dr = r \, d\theta $$
+$$ dr = r d\theta $$
 
 Appelons $r_i$ le rayon du $i$-ème noeud le long d'une diagonale, avec $r_0$ le rayon du
-disque. La condition précédente s'écrit $r_{i+1} - r_i = r_i \, d\theta$.
+disque. La condition précédente s'écrit $r_{i+1} - r_i = r_i d\theta$.
 
 > [!NOTE]
 > **À vous de jouer.**
@@ -181,7 +181,7 @@ $e = AR_{max} \times a$ avec $AR_{max}$ un paramètre de votre choix (de l'ordre
 
 Pour une arête de longueur $L$, on cherche donc la raison $q$ et le nombre de mailles $n$ tels que :
 
-$$ a \, \frac{q^n - 1}{q - 1} = L \qquad \text{et} \qquad a \, q^{n-1} = e $$
+$$ a \frac{q^n - 1}{q - 1} = L \qquad \text{et} \qquad a q^{n-1} = e $$
 
 > [!NOTE]
 > **À vous de jouer.** Résolvez ce système pour $q$ (deux équations, deux inconnues : $q^n$
